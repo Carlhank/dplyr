@@ -14,6 +14,7 @@ dplyr
 
 
 ### Install and library
+
 Install：
 ````r
 install.packages("dplyr")
@@ -25,6 +26,7 @@ library(dplyr)
 ````
 
 ### ToothGrowth
+
 Here we will use a data set that comes with R called `ToothGrowth`.
 
 ````r
@@ -55,11 +57,13 @@ subset(ToothGrowth, supp == "VC" & dose == 1.0, drop = TRUE)
 ````
 
 **2.** `arrange()`
+
 EX1. `ToothGrowth` data
 ````r
 arrange(ToothGrowth, len)
 arrange(ToothGrowth, desc(len))
 ````
+
 EX2. `iris` data
 ````r
 head(iris)
@@ -67,11 +71,13 @@ arrange(iris, Sepal.Length, desc(Sepal.Width))  ## increase Sepal.Length and des
 ````
 
 **3.**`select()`
+
 EX1. `ToothGrowth` data
 ````r
 select(ToothGrowth, len, supp)
 select(ToothGrowth, supp, dose)
 ````
+
 EX2. `iris` data
 ````r
 select(iris, Sepal.Width, Petal.Width, Species)
@@ -82,7 +88,9 @@ select(iris, -c(Sepal.Length, Petal.Length))
 ````r
 mutate(ToothGrowth, meanLen = mean(len), sdLen = sd(len))
 ````
+
 This is equivalent to R basic `transform` function:
+
 ````r
 transform(ToothGrowth, meanLen = mean(len), sdLen = sd(len))
 ````

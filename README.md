@@ -90,14 +90,23 @@ EX1. `ToothGrowth` data
 arrange(ToothGrowth, len)
 arrange(ToothGrowth, desc(len))
 ````
-| len|supp | dose|          |  len|supp | dose|
-|---:|:----|----:|          |----:|:----|----:|
-| 4.2|VC   |  0.5|          | 33.9|VC   |    2|
-| 5.2|VC   |  0.5|          | 32.5|VC   |    2|
-| 5.8|VC   |  0.5|          | 30.9|OJ   |    2|
-| 6.4|VC   |  0.5|          | 29.5|VC   |    2|
-| 7.0|VC   |  0.5|          | 29.4|OJ   |    2|
-| 7.3|VC   |  0.5|          | 27.3|OJ   |    1|
+| len|supp | dose|
+|---:|:----|----:|
+| 4.2|VC   |  0.5|
+| 5.2|VC   |  0.5|
+| 5.8|VC   |  0.5|
+| 6.4|VC   |  0.5|
+| 7.0|VC   |  0.5|
+| 7.3|VC   |  0.5|
+
+|  len|supp | dose|
+|----:|:----|----:|
+| 33.9|VC   |    2|
+| 32.5|VC   |    2|
+| 30.9|OJ   |    2|
+| 29.5|VC   |    2|
+| 29.4|OJ   |    2|
+| 27.3|OJ   |    1|
 
 ````r
 head(iris)
@@ -130,28 +139,46 @@ EX1. `ToothGrowth` data
 select(ToothGrowth, len, supp)
 select(ToothGrowth, supp, dose)
 ````
-|  len|supp |       |supp | dose|
-|----:|:----|       |----:|:----|
-|  4.2|VC   |       |VC   |  0.5|
-| 11.5|VC   |       |VC   |  0.5|
-|  7.3|VC   |       |VC   |  0.5|
-|  5.8|VC   |       |VC   |  0.5|
-|  6.4|VC   |       |VC   |  0.5|
-| 10.0|VC   |       |VC   |  0.5|
+|  len|supp |
+|----:|:----|
+|  4.2|VC   |
+| 11.5|VC   |
+|  7.3|VC   |
+|  5.8|VC   |
+|  6.4|VC   |
+| 10.0|VC   |
+
+|supp | dose|
+|:----|----:|
+|VC   |  0.5|
+|VC   |  0.5|
+|VC   |  0.5|
+|VC   |  0.5|
+|VC   |  0.5|
+|VC   |  0.5|
 
 EX2. `iris` data
 ````r
 select(iris, Sepal.Width, Petal.Width, Species)
 select(iris, -c(Sepal.Length, Petal.Length))
 ````
-| Sepal.Width| Petal.Width|Species |    | Sepal.Width| Petal.Width|Species |
-|-----------:|-----------:|:-------|    |-----------:|-----------:|:-------|
-|         3.5|         0.2|setosa  |    |         3.5|         0.2|setosa  |
-|         3.0|         0.2|setosa  |    |         3.0|         0.2|setosa  |
-|         3.2|         0.2|setosa  |    |         3.2|         0.2|setosa  |
-|         3.1|         0.2|setosa  |    |         3.1|         0.2|setosa  |
-|         3.6|         0.2|setosa  |    |         3.6|         0.2|setosa  |
-|         3.9|         0.4|setosa  |    |         3.9|         0.4|setosa  |
+| Sepal.Width| Petal.Width|Species |
+|-----------:|-----------:|:-------|
+|         3.5|         0.2|setosa  |
+|         3.0|         0.2|setosa  |
+|         3.2|         0.2|setosa  |
+|         3.1|         0.2|setosa  |
+|         3.6|         0.2|setosa  |
+|         3.9|         0.4|setosa  |
+
+| Sepal.Width| Petal.Width|Species |
+|-----------:|-----------:|:-------|
+|         3.5|         0.2|setosa  |
+|         3.0|         0.2|setosa  |
+|         3.2|         0.2|setosa  |
+|         3.1|         0.2|setosa  |
+|         3.6|         0.2|setosa  |
+|         3.9|         0.4|setosa  |
 
 **4.** `mutate()`
 ````r

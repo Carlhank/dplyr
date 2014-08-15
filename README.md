@@ -44,12 +44,12 @@ head(ToothGrowth)
 ````r
 str(ToothGrowth)
 ````
-`
+````
 'data.frame':60 obs. of  3 variables:
  $ len : num  4.2 11.5 7.3  5.8 6.4 10 11.2 11.2 5.2 7 ...
  $ supp: Factor w/ 2 levels "OJ","VC": 2 2 2 2 2 2 2 2 2 2 ...
  $ dose: num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...
-`
+````
 
 Data description
 - len: the length of teeth in each of 10 guinea pigs
@@ -108,6 +108,7 @@ arrange(ToothGrowth, desc(len))
 | 29.4|OJ   |    2|
 | 27.3|OJ   |    1|
 
+EX2. `iris` data
 ````r
 head(iris)
 ````

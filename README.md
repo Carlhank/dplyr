@@ -15,24 +15,24 @@ dplyr
 
 ### Install and library
 Install：
-`r
+````r
 install.packages("dplyr")
-`
+````
 
 Library：
-`r
+````r
 library(dplyr)
-`
+````
 
 ### ToothGrowth
 Here we will use a data set that comes with R called `ToothGrowth`.
 
-`r
+````r
 head(ToothGrowth)
-`
-`r
+````
+````r
 str(ToothGrowth)
-`
+````
 
 Data description
 - len: the length of teeth in each of 10 guinea pigs
@@ -42,105 +42,105 @@ Data description
 ### Basic usage
 
 **1.** `filter()`
-`r
+````r
 filter(ToothGrowth, supp == "VC", dose == 1.0)
-`
+````
 This is equivalent to R basic indicator method:
-`r
+````r
 ToothGrowth[ToothGrowth$supp == "VC" & ToothGrowth$dose == 1.0, ]
-`
+````
 Or you can use `subset` function:
-`r
+````r
 subset(ToothGrowth, supp == "VC" & dose == 1.0, drop = TRUE)
-`
+````
 
 **2.** `arrange()`
 EX1. `ToothGrowth` data
-`r
+````r
 arrange(ToothGrowth, len)
 arrange(ToothGrowth, desc(len))
-`
+````
 EX2. `iris` data
-`r
+````r
 head(iris)
 arrange(iris, Sepal.Length, desc(Sepal.Width))  ## increase Sepal.Length and descrease Sepal.Width
-`
+````
 
 **3.**`select()`
 EX1. `ToothGrowth` data
-`r
+````r
 select(ToothGrowth, len, supp)
 select(ToothGrowth, supp, dose)
-`
+````
 EX2. `iris` data
-`r
+````r
 select(iris, Sepal.Width, Petal.Width, Species)
 select(iris, -c(Sepal.Length, Petal.Length))
-`
+````
 
 **4.** `mutate()`
-`r
+````r
 mutate(ToothGrowth, meanLen = mean(len), sdLen = sd(len))
-`
+````
 This is equivalent to R basic `transform` function:
-`r
+````r
 transform(ToothGrowth, meanLen = mean(len), sdLen = sd(len))
-`
+````
 
 **5.** `summarize()` or `summarise()`
-`r
+````r
 summarize(ToothGrowth, meanLen = mean(len))
 summarise(ToothGrowth, sdLen = sd(len))
-`
+````
 
 ### Chain operator `%.%` usage
 
 **1.** Calculate the mean length of teeth (len) for each delivery method (supp)
-`r
+````r
 ToothGrowth %.%                      ## data
 group_by(supp) %.%                   ## group
 summarize(meanLen = mean(len))       ## calculate mean
-`
+````
 
 **2.** Calculate the mean teeth length by delivery method and dose level?
-`r
+````r
 ToothGrowth %.%
 group_by(supp, dose) %.%
 summarise(meanLen = mean(len), sdLen = sd(len))
-`
+````
 
 #####*Now please compare the following 3. and 4. results：*
 
 **3.** Create new variable
-`r
+````r
 ToothGrowth %.%
 mutate(StdLen = (len - mean(len)) / sd(len))
-`
+````
 
 **4.** Create new variable, which is the standard value of the tooth length in the six supp x dose groups.
 
-`r
+````r
 ToothGrowth %.%
 group_by(supp, dose) %.%
 mutate(StdLen = (len - mean(len)) / sd(len))
-`
+````
 
 ##### Practice
 
 **[practice 1]**
-`r
+````r
 ToothGrowth %.%
 filter(dose == 1) %.%
 select(len, supp) %.%
 arrange(len)
-`
+````
 
 **[practice 2]**
-`r
+````r
 TG05 <- ToothGrowth %.%
 filter(dose == 0.5) %.%
 select(len, supp) %.%
 arrange(desc(len)) %.%
 head(n = 5)
 TG05
-`
+````
